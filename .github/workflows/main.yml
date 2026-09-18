@@ -26,7 +26,16 @@ jobs:
             libncursesw5-dev cmake libffi-dev \
             libssl-dev
 
-      - name: Instalar Android SDK
+     - name: Configurar Java 17
+       run: |
+         sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+         sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+         export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+         echo "JAVA_HOME=$JAVA_HOME" >> "$GITHUB_ENV"
+         echo "$JAVA_HOME/bin" >> "$GITHUB_PATH"
+         java -version
+     
+     - name: Instalar Android SDK
         uses: android-actions/setup-android@v3
       
       - name: Instalar Buildozer
