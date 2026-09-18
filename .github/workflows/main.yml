@@ -27,14 +27,9 @@ jobs:
             libssl-dev
      
       - name: Instalar Android SDK
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y android-sdk
-          export ANDROID_HOME=/usr/lib/android-sdk
-          export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-          yes | sudo $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          sudo $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
-   
+        uses: 
+        android-actions/setup-android@v3
+      
       - name: Instalar Buildozer
         run: |
           pip install --upgrade pip
