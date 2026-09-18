@@ -27,8 +27,7 @@ jobs:
             libssl-dev
      
       - name: Instalar Android SDK
-        uses: 
-        android-actions/setup-android@v3
+        uses: android-actions/setup-android@v3
       
       - name: Instalar Buildozer
         run: |
